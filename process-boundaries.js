@@ -34,7 +34,15 @@ is_disputed = function(tags) {
     return 0
 }
 
-Osmium.Callbacks.way = function() {
+get_name = function(tags) {
+  if( tags['name'] ) {
+    return '"' + tags['name'] + '"';
+  } else {
+    return 'NULL';
+  }
+}
+
+Osmium.Callbacks.area = function() {
     // This will import all ways in the OSM file except coastlines. We assume
     // that we are only looking at ways that belong in boundary relations.
 
@@ -49,12 +57,12 @@ Osmium.Callbacks.way = function() {
     if (geometry == undefined) {
         return;
     } else {
-        geometry = ['st_transform(\'', geometry, '\'::geometry, 900913)'].join('');
+        geometry = ['st_transform(\'', geometry, '\'::geometry, 4326)'].join('');
     }
 
-    print(['INSERT INTO ', ways_table, ' (osm_id, maritime, disputed, geom) ',
+    print(['INSERT INTO ', ways_table, ' (osm_id, maritime, disputed, name, geom) ',
           'VALUES (', this.id, ', ', is_maritime(this.tags), ', ',
-          is_disputed(this.tags), ', ', geometry, ');'].join(''));
+          is_disputed(this.tags), ', ', get_name(this.tags), ', ', geometry, ');'].join(''));
 }
 
 Osmium.Callbacks.relation = function() {
