@@ -60,7 +60,7 @@ for level in xrange(args.min_admin_level, args.max_admin_level):
   if os.path.exists(outfile):
       print('Found existing file {0}; skipping filtering.'.format(outfile))
   else:
-      cmd = '''~blackmad/osm/bin/osmosis \
+      cmd = '''~blackmad/NO_BACKUP/osm/bin/osmosis \
           --read-pbf {0} \
           --tf accept-relations admin_level={1} \
           --tf accept-relations boundary=administrative \
@@ -74,10 +74,6 @@ for level in xrange(args.min_admin_level, args.max_admin_level):
       subprocess.call([cmd], shell=True)
   cmd = 'osmjs -i osm2shape -d -m -2 -l array -j shapefile.js {0} shp-{1}'.format(outfile, outfile)
   subprocess.call([cmd], shell=True)
-
-      #subprocess.call(['osmjs -d -m -2 -l sparsetable -r -j shapefile.js {0} '.format(outfile)],
-      #shell=True)
-
 
 ## Create simplified geometries
 

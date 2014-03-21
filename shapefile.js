@@ -1,6 +1,11 @@
-   shapefile(argv[0]).
-        type(POLYGON).
-        column('id', STRING, 12).
-        column('type', STRING, 32).
-        column('admin_level', INTEGER).
-        column('name', STRING, 100);
+ shapefile(argv[0]).
+      type(POLYGON).
+      column('id', STRING, 12).
+      column('level', INTEGER, 10).
+      column('name', STRING, 100);
+
+area('boundary', 'administrative').
+    output(argv[0]).
+    attr('level', 'admin_level').
+    attr('name');
+
