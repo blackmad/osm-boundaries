@@ -73,7 +73,14 @@ for level in xrange(args.min_admin_level, args.max_admin_level):
       print cmd
       subprocess.call([cmd], shell=True)
   cmd = 'osmjs -i osm2shape -d -m -2 -l array -j shapefile.js {0} shp-{1}'.format(outfile, outfile)
+  print cmd
   subprocess.call([cmd], shell=True)
+  cmd = "mmv '*.pbf*' '#1#2'"
+  print cmd
+  subprocess.call([cmd], shell=True)
+  cmd2 = 'ogr2ogr -t_srs EPSG:4326 4326-%s %s -lco ENCODING=UTF-8' % (outfile, outfile)
+  print cmd2
+  subprocess.call([cmd2], shell=True)
 
 ## Create simplified geometries
 
