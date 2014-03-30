@@ -50,7 +50,7 @@ for level in xrange(args.min_admin_level, args.max_admin_level + 1):
   cmd = "mmv '*.pbf*' '#1#2'"
   print cmd
   subprocess.call([cmd], shell=True)
-  cmd2 = 'ogr2ogr -t_srs EPSG:4326 4326-%s %s -lco ENCODING=UTF-8' % (outfile, outfile)
+  cmd2 = 'ogr2ogr -t_srs EPSG:4326 4326-%s %s -lco ENCODING=UTF-8' % (outfile.replace('pbf', 'shp'), outfile.replace('pbf', 'shp'))
   print cmd2
   subprocess.call([cmd2], shell=True)
 
