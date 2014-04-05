@@ -36,6 +36,7 @@ for level in xrange(args.min_admin_level, args.max_admin_level + 1):
           --read-pbf {0} \
           --tf accept-relations admin_level={1} \
           --tf accept-relations boundary=administrative \
+          --tf reject-relations id=3218753 \
           --used-way \
           --used-node \
           --write-pbf {2}'''.format(
