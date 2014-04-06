@@ -98,7 +98,7 @@
       column('name:haw', STRING, 100).
       column('name:yi', STRING, 100);
 
-area('boundary', 'administrative').
+area().
     output(argv[0]).
     attr('level', 'admin_level').
     attr('name').
