@@ -98,9 +98,8 @@
       column('name:haw', STRING, 100).
       column('name:yi', STRING, 100);
 
-area().
+area('name', '*').
     output(argv[0]).
-    attr('level', 'admin_level').
     attr('name').
     attr('name:af').
     attr('name:sq').
