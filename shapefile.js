@@ -3,6 +3,11 @@
       column('id', STRING, 12).
       column('level', INTEGER, 10).
       column('name', STRING, 100).
+      column('alt_name', STRING, 100).
+      column('int_name', STRING, 100).
+      column('loc_name', STRING, 100).
+      column('nat_name', STRING, 100).
+      column('short_name', STRING, 100).
       column('name:af', STRING, 100).
       column('name:sq', STRING, 100).
       column('name:am', STRING, 100).
@@ -98,9 +103,14 @@
       column('name:haw', STRING, 100).
       column('name:yi', STRING, 100);
 
-area('name', '*').
+area('id', '*').
     output(argv[0]).
     attr('name').
+    attr('alt_name').
+    attr('int_name').
+    attr('loc_name').
+    attr('nat_name').
+    attr('short_name').
     attr('name:af').
     attr('name:sq').
     attr('name:am').

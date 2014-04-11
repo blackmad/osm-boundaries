@@ -4,7 +4,7 @@ set -x
 
 osmosis \
   --read-pbf $1 \
-  --tf accept-ways wikipedia=* \
+  --wk "website,wikipedia" \
   --tf reject-ways boundary=administrative \
   --tf reject-ways boundary=census \
   --tf reject-ways natural=glacier \
